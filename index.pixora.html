@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+<meta name="description" content="PIXORA TOOLS — Complete image toolkit by Md. Ashfaqur Rahman Tanim. Compress, resize, convert, remove backgrounds, extract colors, generate QR codes and more. 100% free, 100% private." />
+<meta name="theme-color" content="#070b14" />
+<meta name="keywords" content="image tools, compress image, bg remover, image converter, ocr, qr generator, color palette, watermark, image resize" />
+<meta name="author" content="Md. Ashfaqur Rahman Tanim" />
+
+<!-- PWA Meta -->
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="PIXORA" />
+<meta name="application-name" content="PIXORA TOOLS" />
+<meta name="msapplication-TileColor" content="#070b14" />
+<meta name="msapplication-tap-highlight" content="no" />
+
+<title>PIXORA TOOLS — Your Complete Image Toolkit</title>
+
+<link rel="icon" type="image/png" href="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" />
+<link rel="apple-touch-icon" href="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" />
+<link rel="manifest" href="./manifest.json" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary: #070b14;
+  --bg-elevated: #0b1220;
+  --bg-card: rgba(15, 23, 42, 0.6);
+  --bg-card-solid: #0f172a;
+  --bg-input: rgba(15, 23, 42, 0.7);
+
+  --blue: #3b82f6;
+  --violet: #8b5cf6;
+  --cyan: #06b6d4;
+  --pink: #ec4899;
+  --amber: #f59e0b;
+  --emerald: #10b981;
+  --rose: #f43f5e;
+
+  --blue-glow: rgba(59, 130, 246, 0.35);
+  --violet-glow: rgba(139, 92, 246, 0.25);
+  --cyan-glow: rgba(6, 182, 212, 0.2);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(59, 130, 246, 0.35);
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-btn: 0 4px 16px rgba(59, 130, 246, 0.25);
+  --shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.4);
+
+  --font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f4f7fe;
+  --bg-elevated: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-solid: #ffffff;
+  --bg-input: rgba(248, 250, 252, 0.9);
+
+  --blue: #2563eb;
+  --violet: #7c3aed;
+  --cyan: #0891b2;
+  --blue-glow: rgba(37, 99, 235, 0.18);
+  --violet-glow: rgba(124, 58, 237, 0.12);
+  --cyan-glow: rgba(8, 145, 178, 0.12);
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+
+  --success: #059669;
+  --danger: #dc2626;
+  --warning: #d97706;
+
+  --border: rgba(15, 23, 42, 0.08);
+  --border-highlight: rgba(37, 99, 235, 0.3);
+
+  --shadow-card: 0 8px 32px rgba(37, 99, 235, 0.08);
+  --shadow-btn: 0 4px 16px rgba(37, 99, 235, 0.2);
+  --shadow-hover: 0 20px 48px rgba(37, 99, 235, 0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color var(--transition), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 0%, var(--blue-glow), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 100%, var(--violet-glow), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, var(--cyan-glow), transparent 70%);
+  transition: background var(--transition);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+  background-clip: content-box;
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7, 11, 20, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition), border-color var(--transition);
+}
+[data-theme="light"] .header { background: rgba(244, 247, 254, 0.8); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+.brand img {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--border), 0 4px 12px var(--blue-glow);
+}
+
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, var(--blue), var(--violet), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav { display: flex; align-items: center; gap: 6px; }
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-link:hover { color: var(--text-main); background: rgba(148, 163, 184, 0.1); }
+
+.theme-toggle {
+  width: 38px; height: 38px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+.theme-toggle:hover { color: var(--blue); border-color: var(--border-highlight); transform: translateY(-1px); }
+
+/* ============================================================
+   INSTALL BUTTON
+   ============================================================ */
+.install-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+  box-shadow: 0 4px 14px var(--blue-glow);
+  white-space: nowrap;
+  animation: pulseInstall 2.5s ease-in-out infinite;
+}
+.install-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px var(--blue-glow); }
+.install-btn i { font-size: 12px; }
+
+@keyframes pulseInstall {
+  0%, 100% { box-shadow: 0 4px 14px var(--blue-glow); }
+  50% { box-shadow: 0 4px 22px var(--blue-glow), 0 0 0 6px rgba(59, 130, 246, 0.12); }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { text-align: center; padding: 80px 24px 56px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12));
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 28px;
+  animation: fadeSlideUp 0.6s ease both;
+}
+.hero-badge i { font-size: 11px; }
+
+.hero h1 {
+  font-size: clamp(40px, 7vw, 76px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 22px;
+  animation: fadeSlideUp 0.6s 0.1s ease both;
+}
+.hero h1 .gradient {
+  background: linear-gradient(120deg, var(--blue), var(--violet), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: clamp(15px, 2vw, 19px);
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto 20px;
+  animation: fadeSlideUp 0.6s 0.2s ease both;
+}
+
+.hero-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+  animation: fadeSlideUp 0.6s 0.3s ease both;
+}
+.hero-meta i { color: var(--success); font-size: 11px; }
+.hero-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-dim); }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto 64px;
+  animation: fadeSlideUp 0.6s 0.4s ease both;
+}
+.stat { background: var(--bg-card); padding: 22px 18px; text-align: center; backdrop-filter: blur(12px); }
+.stat-value {
+  font-size: 26px; font-weight: 800; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+.stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+
+/* ============================================================
+   TOOLS
+   ============================================================ */
+.tools-section { padding: 0 24px 80px; }
+.section-head { text-align: center; margin-bottom: 44px; }
+.section-head h2 {
+  font-size: clamp(26px, 4vw, 36px); font-weight: 800;
+  letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.section-head h2 .gradient {
+  background: linear-gradient(120deg, var(--blue), var(--violet), var(--cyan));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section-head p { font-size: 15px; color: var(--text-muted); max-width: 580px; margin: 0 auto; }
+
+.category-filter {
+  display: flex; gap: 8px; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 40px;
+}
+.filter-btn {
+  padding: 10px 20px; border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all var(--transition);
+  font-family: inherit;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.filter-btn:hover { border-color: var(--border-highlight); color: var(--text-main); transform: translateY(-2px); }
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: #fff; border-color: transparent;
+  box-shadow: 0 4px 16px var(--blue-glow);
+}
+.filter-btn i { font-size: 12px; }
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.tool-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--tool-accent, linear-gradient(90deg, var(--blue), var(--violet)));
+  opacity: 0; transition: opacity var(--transition);
+}
+.tool-card:hover {
+  border-color: var(--border-highlight);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  background: var(--bg-card-solid);
+}
+.tool-card:hover::before { opacity: 1; }
+.tool-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.tool-card.featured {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.06));
+  border-color: rgba(139, 92, 246, 0.3);
+}
+.tool-card.featured::before { opacity: 1; }
+
+.tool-icon {
+  width: 60px; height: 60px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.tool-icon::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  filter: blur(16px); opacity: 0.4; z-index: -1;
+}
+
+.tool-name {
+  font-size: 20px; font-weight: 800;
+  letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+
+.tool-badge {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px; border-radius: 100px;
+  background: linear-gradient(135deg, var(--amber), var(--rose));
+  color: #fff;
+}
+.tool-badge.new { background: linear-gradient(135deg, var(--emerald), var(--cyan)); }
+.tool-badge.platform { background: linear-gradient(135deg, var(--blue), var(--violet)); }
+
+.tool-desc {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.65; flex-grow: 1;
+}
+
+.tool-features {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;
+}
+.tool-feature {
+  font-size: 11px; font-weight: 600;
+  padding: 4px 10px; border-radius: 100px;
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.tool-feature i { font-size: 9px; }
+
+.tool-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700; color: var(--blue);
+  margin-top: 4px; transition: gap var(--transition);
+}
+.tool-card:hover .tool-cta { gap: 12px; }
+.tool-cta i { font-size: 11px; }
+
+/* ============================================================
+   INFO CARDS
+   ============================================================ */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.info-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  transition: all var(--transition);
+}
+.info-card:hover {
+  border-color: var(--border-highlight);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+.info-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; color: var(--blue);
+  margin-bottom: 16px;
+}
+.info-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.info-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+/* ============================================================
+   DEVELOPER BANNER
+   ============================================================ */
+.presented-banner {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 40px 40px 36px;
+  border-radius: var(--radius-2xl);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.08), rgba(6, 182, 212, 0.08));
+  border: 1px solid var(--border-highlight);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.presented-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, var(--blue-glow), transparent 55%);
+  opacity: 0.25;
+  pointer-events: none;
+  animation: rotateSlow 20s linear infinite;
+}
+@keyframes rotateSlow { to { transform: rotate(360deg); } }
+
+.presented-banner .content { position: relative; z-index: 1; }
+
+.presented-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 18px;
+}
+
+.presented-photo-wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 20px;
+}
+.presented-photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--violet), var(--cyan));
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(16px);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+.presented-photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--violet), var(--cyan));
+  z-index: -1;
+  opacity: 0.9;
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.06); }
+}
+.presented-photo {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg-primary);
+  display: block;
+}
+
+.presented-name {
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, var(--blue), var(--violet), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.presented-name i {
+  background: linear-gradient(135deg, var(--amber), var(--rose));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 0.75em;
+}
+
+.presented-role {
+  font-size: 13px;
+  color: var(--blue);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.presented-tagline {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+
+.presented-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.presented-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 100px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+.presented-link:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--blue-glow);
+}
+.presented-link.primary {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px var(--blue-glow);
+}
+.presented-link.primary:hover { color: #fff; box-shadow: 0 8px 24px var(--blue-glow); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 28px;
+  background: rgba(0, 0, 0, 0.2);
+}
+[data-theme="light"] .footer { background: rgba(15, 23, 42, 0.02); }
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 36px;
+}
+.footer-brand { display: flex; flex-direction: column; gap: 14px; }
+.footer-brand-logo { display: flex; align-items: center; gap: 12px; }
+.footer-brand-logo img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
+.footer-brand-logo b {
+  font-size: 18px; font-weight: 800;
+  background: linear-gradient(90deg, var(--blue), var(--violet), var(--cyan));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.footer-brand p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; max-width: 320px; }
+
+.footer-col h4 {
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+.footer-col a {
+  display: block;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  padding: 6px 0;
+  transition: all var(--transition);
+}
+.footer-col a:hover { color: var(--blue); padding-left: 6px; }
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.footer-bottom strong { color: var(--text-muted); font-weight: 600; }
+.footer-bottom a { color: var(--blue); font-weight: 600; }
+.footer-bottom a:hover { color: var(--cyan); text-decoration: underline; }
+.footer-tagline { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.footer-tagline i { color: var(--success); font-size: 11px; }
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+.back-top {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: #fff; border: none; cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 8px 24px var(--blue-glow);
+  z-index: 90;
+  opacity: 0; visibility: hidden;
+  transition: all var(--transition);
+  display: flex; align-items: center; justify-content: center;
+}
+.back-top.show { opacity: 1; visibility: visible; }
+.back-top:hover { transform: translateY(-4px); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  .header-inner { padding: 12px 16px; }
+  .nav-link span { display: none; }
+  .nav-link { padding: 8px 12px; }
+  .install-btn span { display: none; }
+  .install-btn { padding: 9px 12px; }
+  .hero { padding: 56px 16px 40px; }
+  .tools-section { padding: 0 16px 56px; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .presented-banner { padding: 30px 22px 26px; margin-bottom: 56px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .brand-sub { display: none; }
+  .hero h1 { font-size: 38px; }
+  .stat-value { font-size: 22px; }
+  .tool-card { padding: 22px; }
+  .tool-icon { width: 52px; height: 52px; font-size: 21px; }
+  .presented-photo-wrap { width: 90px; height: 90px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header">
+  <div class="header-inner">
+    <a href="./index.html" class="brand" aria-label="PIXORA TOOLS home">
+      <img src="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" alt="PIXORA logo" />
+      <div class="brand-text">
+        <span class="brand-name">PIXORA TOOLS</span>
+        <span class="brand-sub">Your Images. Your Space.</span>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#tools" class="nav-link">
+        <i class="fa-solid fa-toolbox"></i>
+        <span>Tools</span>
+      </a>
+      <a href="#features" class="nav-link">
+        <i class="fa-solid fa-star"></i>
+        <span>Features</span>
+      </a>
+      <a href="#about" class="nav-link">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>About</span>
+      </a>
+      <button class="install-btn hidden" id="installBtn" aria-label="Install app">
+        <i class="fa-solid fa-download"></i>
+        <span>Install App</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      Your Complete Image Toolkit
+    </div>
+    <h1>
+      Everything you need<br />
+      for <span class="gradient">images</span>
+    </h1>
+    <p>
+      10 powerful tools in one place — compress, resize, convert, remove backgrounds,
+      extract colors, generate QR codes and much more. All free, all private, all in your browser.
+    </p>
+    <div class="hero-meta">
+      <span><i class="fa-solid fa-check-circle"></i> 100% Client-Side</span>
+      <span class="hero-dot"></span>
+      <span><i class="fa-solid fa-check-circle"></i> No Signup Required</span>
+      <span class="hero-dot"></span>
+      <span><i class="fa-solid fa-check-circle"></i> Installable App</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="container">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-value">10+</div><div class="stat-label">Tools Available</div></div>
+    <div class="stat"><div class="stat-value">100%</div><div class="stat-label">Client-Side</div></div>
+    <div class="stat"><div class="stat-value">$0</div><div class="stat-label">Always Free</div></div>
+    <div class="stat"><div class="stat-value">∞</div><div class="stat-label">No Limits</div></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     TOOLS GRID
+     ============================================================ -->
+<section class="tools-section" id="tools">
+  <div class="container">
+    <div class="section-head">
+      <h2>All <span class="gradient">Tools</span></h2>
+      <p>Pick a tool and start working. Everything runs directly in your browser — no uploads, no waiting.</p>
+    </div>
+
+    <div class="category-filter" id="categoryFilter">
+      <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-border-all"></i> All Tools</button>
+      <button class="filter-btn" data-filter="edit"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+      <button class="filter-btn" data-filter="convert"><i class="fa-solid fa-arrows-rotate"></i> Convert</button>
+      <button class="filter-btn" data-filter="ai"><i class="fa-solid fa-brain"></i> AI</button>
+      <button class="filter-btn" data-filter="generate"><i class="fa-solid fa-wand-sparkles"></i> Generate</button>
+    </div>
+
+    <div class="tools-grid" id="toolsGrid">
+
+      <!-- PIXORA PLATFORM -->
+      <a href="https://martinitiative.github.io/pixora/index.html"
+         class="tool-card featured"
+         data-category="platform"
+         style="--tool-accent: linear-gradient(90deg, #3b82f6, #8b5cf6);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+        </div>
+        <div class="tool-name">
+          PIXORA Platform
+          <span class="tool-badge platform">Main App</span>
+        </div>
+        <p class="tool-desc">
+          The full-featured image hosting platform. Upload, compress, organize and share your images with a beautifully simple interface.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Upload & Share</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Cloud Storage</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Galleries</span>
+        </div>
+        <span class="tool-cta">Open Platform <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- ENCODE -->
+      <a href="./Pixora.encode.html"
+         class="tool-card"
+         data-category="convert"
+         style="--tool-accent: linear-gradient(90deg, #06b6d4, #3b82f6);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="tool-name">
+          PIXORA ENCODE
+          <span class="tool-badge new">New</span>
+        </div>
+        <p class="tool-desc">
+          Convert images to Base64 and Base64 back to images. Perfect for embedding images in HTML, CSS, JSON and other text formats.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Image → Base64</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Base64 → Image</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Data URL</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- COMPRESS -->
+      <a href="./compress.html"
+         class="tool-card"
+         data-category="edit"
+         style="--tool-accent: linear-gradient(90deg, #8b5cf6, #ec4899);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
+          <i class="fa-solid fa-compress"></i>
+        </div>
+        <div class="tool-name">
+          PIXORA COMPRESS
+          <span class="tool-badge new">New</span>
+        </div>
+        <p class="tool-desc">
+          Reduce image file sizes by up to 90% without visible quality loss. Batch compress, target exact file sizes, download as ZIP.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Bulk Compress</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Target Size</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Before/After</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- BG REMOVE -->
+      <a href="./bg-remove.html"
+         class="tool-card"
+         data-category="ai"
+         style="--tool-accent: linear-gradient(90deg, #10b981, #06b6d4);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #10b981, #06b6d4);">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <div class="tool-name">
+          PIXORA BG REMOVE
+          <span class="tool-badge new">AI</span>
+        </div>
+        <p class="tool-desc">
+          AI-powered background remover. Get a perfectly transparent PNG in one click — perfect for product photos, portraits and design work.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> AI Powered</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Transparent PNG</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> One Click</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- OCR -->
+      <a href="./ocr.html"
+         class="tool-card"
+         data-category="ai"
+         style="--tool-accent: linear-gradient(90deg, #f59e0b, #ef4444);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">
+          <i class="fa-solid fa-font"></i>
+        </div>
+        <div class="tool-name">
+          PIXORA OCR
+          <span class="tool-badge new">AI</span>
+        </div>
+        <p class="tool-desc">
+          Extract text from images in multiple languages. Support for English, Bengali, Hindi, Arabic and many more.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Multi-Language</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Copy Text</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Editable</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- RESIZE -->
+      <a href="./resize.html"
+         class="tool-card"
+         data-category="edit"
+         style="--tool-accent: linear-gradient(90deg, #3b82f6, #06b6d4);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">
+          <i class="fa-solid fa-expand"></i>
+        </div>
+        <div class="tool-name">PIXORA RESIZE</div>
+        <p class="tool-desc">
+          Bulk resize images to any dimension. Social media presets for Instagram, Facebook, Twitter, YouTube and more.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Social Presets</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Bulk Resize</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Aspect Lock</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- WATERMARK -->
+      <a href="./watermark.html"
+         class="tool-card"
+         data-category="edit"
+         style="--tool-accent: linear-gradient(90deg, #ec4899, #8b5cf6);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">
+          <i class="fa-solid fa-droplet"></i>
+        </div>
+        <div class="tool-name">PIXORA WATERMARK</div>
+        <p class="tool-desc">
+          Protect your images with custom text or logo watermarks. Batch apply with position, opacity and rotation control.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Text/Logo</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Batch Apply</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> 9 Positions</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- CONVERT -->
+      <a href="./convert.html"
+         class="tool-card"
+         data-category="convert"
+         style="--tool-accent: linear-gradient(90deg, #06b6d4, #10b981);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #06b6d4, #10b981);">
+          <i class="fa-solid fa-arrows-rotate"></i>
+        </div>
+        <div class="tool-name">PIXORA CONVERT</div>
+        <p class="tool-desc">
+          Convert between PNG, JPG, WEBP, AVIF, HEIC, BMP, GIF and more. Also supports SVG rasterize and PDF conversions.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> 10+ Formats</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> HEIC Support</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Batch Convert</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- PALETTE -->
+      <a href="./palette.html"
+         class="tool-card"
+         data-category="generate"
+         style="--tool-accent: linear-gradient(90deg, #f59e0b, #ec4899);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #f59e0b, #ec4899);">
+          <i class="fa-solid fa-palette"></i>
+        </div>
+        <div class="tool-name">PIXORA PALETTE</div>
+        <p class="tool-desc">
+          Extract beautiful color palettes from any image. Get HEX, RGB, HSL values and export as CSS, Tailwind or JSON.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> 8 Colors</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> HEX/RGB/HSL</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Export CSS</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- QR -->
+      <a href="./qr.html"
+         class="tool-card"
+         data-category="generate"
+         style="--tool-accent: linear-gradient(90deg, #8b5cf6, #3b82f6);">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #8b5cf6, #3b82f6);">
+          <i class="fa-solid fa-qrcode"></i>
+        </div>
+        <div class="tool-name">PIXORA QR</div>
+        <p class="tool-desc">
+          Generate custom QR codes with logos, colors and styles. Support for URL, text, email, WiFi, vCard and bulk generation.
+        </p>
+        <div class="tool-features">
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Logo Embed</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> Custom Colors</span>
+          <span class="tool-feature"><i class="fa-solid fa-check"></i> PNG/SVG</span>
+        </div>
+        <span class="tool-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY PIXORA
+     ============================================================ -->
+<section class="tools-section" id="features">
+  <div class="container">
+    <div class="section-head">
+      <h2>Why <span class="gradient">PIXORA</span>?</h2>
+      <p>Built with privacy, speed and simplicity at its core.</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>100% Private</h3>
+        <p>All processing happens in your browser. Your images never leave your device.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3>Blazing Fast</h3>
+        <p>No uploads, no waiting. Every tool works instantly on your device.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3>Install as App</h3>
+        <p>Add PIXORA to your home screen and use it like a native app — even offline.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-gift"></i></div>
+        <h3>Always Free</h3>
+        <p>No signup, no subscription, no hidden fees. All tools are free forever.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-palette"></i></div>
+        <h3>Beautiful UI</h3>
+        <p>Dark and light themes, smooth animations, and a modern interface.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-code-branch"></i></div>
+        <h3>Open Source Feel</h3>
+        <p>No tracking, no ads, no analytics. Just clean, honest tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DEVELOPER BANNER
+     ============================================================ -->
+<section class="tools-section" id="about" style="padding-bottom: 40px;">
+  <div class="container">
+    <div class="presented-banner">
+      <div class="content">
+        <div class="presented-label">Designed & Developed by</div>
+        <div class="presented-photo-wrap">
+          <img class="presented-photo"
+               src="https://i.ibb.co/dwVWPd2V/file-0000000048f882119fa708f944ef6f81.png"
+               alt="Md. Ashfaqur Rahman Tanim" />
+        </div>
+        <div class="presented-name">
+          <i class="fa-solid fa-crown"></i>
+          Md. Ashfaqur Rahman Tanim
+        </div>
+        <div class="presented-role">Full-Stack Developer</div>
+        <p class="presented-tagline">
+          Building free, privacy-first tools for creators everywhere.
+          Every tool is crafted with care, precision, and a passion for clean design.
+        </p>
+        <div class="presented-links">
+          <a href="https://rovermdashfaq.github.io/portfolio"
+             class="presented-link primary"
+             target="_blank"
+             rel="noopener">
+            <i class="fa-solid fa-user-tie"></i> View Portfolio
+          </a>
+          <a href="https://martinitiative.github.io/pixora/index.html"
+             class="presented-link"
+             target="_blank"
+             rel="noopener">
+            <i class="fa-solid fa-globe"></i> PIXORA Platform
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-logo">
+        <img src="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" alt="PIXORA logo" />
+        <b>PIXORA TOOLS</b>
+      </div>
+      <p>
+        Your Images. Your Space. Ten powerful image tools, one clean interface,
+        zero compromises on privacy.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <a href="./Pixora.encode.html">Encode</a>
+      <a href="./compress.html">Compress</a>
+      <a href="./bg-remove.html">BG Remove</a>
+      <a href="./ocr.html">OCR</a>
+      <a href="./convert.html">Convert</a>
+    </div>
+    <div class="footer-col">
+      <h4>More Tools</h4>
+      <a href="./resize.html">Resize</a>
+      <a href="./watermark.html">Watermark</a>
+      <a href="./palette.html">Palette</a>
+      <a href="./qr.html">QR Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://martinitiative.github.io/pixora/index.html" target="_blank" rel="noopener">PIXORA Platform</a>
+      <a href="https://rovermdashfaq.github.io/portfolio" target="_blank" rel="noopener">Portfolio</a>
+      <a href="#about">About Developer</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© <span id="year"></span> <strong>PIXORA TOOLS</strong> — All rights reserved</div>
+    <div class="footer-tagline">
+      <i class="fa-solid fa-check-circle"></i>
+      Developed by <a href="https://rovermdashfaq.github.io/portfolio" target="_blank" rel="noopener">Md. Ashfaqur Rahman Tanim</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script>
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const CONFIG = { THEME_KEY: 'pixora-tools-theme' };
+const $ = (id) => document.getElementById(id);
+
+/* ============================================================
+   THEME
+   ============================================================ */
+function initTheme() {
+  let saved = null;
+  try { saved = localStorage.getItem(CONFIG.THEME_KEY); } catch (e) {}
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    updateThemeIcon(true);
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    updateThemeIcon(false);
+  }
+}
+function toggleTheme() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  if (isLight) {
+    document.documentElement.removeAttribute('data-theme');
+    try { localStorage.setItem(CONFIG.THEME_KEY, 'dark'); } catch (e) {}
+    updateThemeIcon(false);
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    try { localStorage.setItem(CONFIG.THEME_KEY, 'light'); } catch (e) {}
+    updateThemeIcon(true);
+  }
+}
+function updateThemeIcon(isLight) {
+  const icon = $('themeToggle').querySelector('i');
+  if (icon) icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  $('themeToggle').setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+}
+
+/* ============================================================
+   CATEGORY FILTER
+   ============================================================ */
+function initCategoryFilter() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.tool-card');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      buttons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      cards.forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        const show = filter === 'all' || cat === filter;
+        if (show) {
+          card.style.display = '';
+          requestAnimationFrame(() => { card.style.opacity = '1'; card.style.transform = ''; });
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => { if (card.style.opacity === '0') card.style.display = 'none'; }, 200);
+        }
+      });
+    });
+  });
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+function initBackTop() {
+  const backTop = $('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('show', window.scrollY > 500);
+  }, { passive: true });
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ============================================================
+   SMOOTH SCROLL
+   ============================================================ */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href === '#' || href.length < 2) return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+/* ============================================================
+   STAGGER ANIMATION
+   ============================================================ */
+function initStaggerAnimation() {
+  const cards = document.querySelectorAll('.tool-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition =
+      'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease';
+    setTimeout(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, 100 + i * 60);
+  });
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+function showToast(message, type = 'info') {
+  const colors = {
+    info: '#3b82f6',
+    success: '#10b981',
+    error: '#ef4444',
+    warning: '#f59e0b',
+  };
+  const icons = {
+    info: 'fa-circle-info',
+    success: 'fa-circle-check',
+    error: 'fa-circle-exclamation',
+    warning: 'fa-triangle-exclamation',
+  };
+  const toast = document.createElement('div');
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid ${colors[type]}66;
+    border-left: 4px solid ${colors[type]};
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 9999;
+    max-width: 90%;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideUpToast 0.3s ease;
+  `;
+  toast.innerHTML = `<i class="fa-solid ${icons[type]}" style="color: ${colors[type]}"></i><span>${message}</span>`;
+  document.body.appendChild(toast);
+
+  const style = document.createElement('style');
+  style.textContent = `@keyframes slideUpToast { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }`;
+  document.head.appendChild(style);
+
+  setTimeout(() => {
+    toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(-50%) translateY(20px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 4000);
+}
+
+/* ============================================================
+   PWA
+   ============================================================ */
+let deferredPrompt = null;
+
+function initPWA() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('./sw.js', { scope: './' })
+        .then((reg) => {
+          console.log('[PWA] SW registered:', reg.scope);
+          reg.addEventListener('updatefound', () => {
+            const newWorker = reg.installing;
+            if (!newWorker) return;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                showUpdateToast();
+              }
+            });
+          });
+        })
+        .catch((err) => console.warn('[PWA] SW failed:', err));
+    });
+  }
+
+  const installBtn = $('installBtn');
+  if (!installBtn) return;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.classList.remove('hidden');
+    console.log('[PWA] Install prompt ready');
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) {
+      showInstallInstructions();
+      return;
+    }
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log('[PWA] Outcome:', outcome);
+    deferredPrompt = null;
+    installBtn.classList.add('hidden');
+    if (outcome === 'accepted') {
+      showToast('PIXORA TOOLS installed successfully!', 'success');
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    console.log('[PWA] Installed');
+    installBtn.classList.add('hidden');
+    deferredPrompt = null;
+  });
+
+  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    installBtn.classList.add('hidden');
+  }
+}
+
+function showInstallInstructions() {
+  const ua = navigator.userAgent;
+  let msg = '';
+  if (/iPad|iPhone|iPod/.test(ua)) {
+    msg = 'Tap the Share button, then "Add to Home Screen".';
+  } else if (/Android/.test(ua)) {
+    msg = 'Tap the menu (⋮), then "Install app" or "Add to Home Screen".';
+  } else {
+    msg = 'Click the install icon in your browser\'s address bar.';
+  }
+  showToast(msg, 'info');
+}
+
+function showUpdateToast() {
+  const toast = document.createElement('div');
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(59,130,246,0.4);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    font-size: 14px;
+    z-index: 9999;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 340px;
+  `;
+  toast.innerHTML = `
+    <i class="fa-solid fa-rotate" style="color: #3b82f6; font-size: 18px;"></i>
+    <div style="flex: 1;">
+      <div style="font-weight: 700; margin-bottom: 4px;">Update Available</div>
+      <div style="font-size: 12px; color: #94a3b8;">A new version is ready.</div>
+    </div>
+    <button onclick="location.reload()" style="
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: #fff; border: none;
+      padding: 6px 12px; border-radius: 6px;
+      font-size: 12px; font-weight: 700;
+      cursor: pointer; font-family: inherit;
+    ">Update</button>
+  `;
+  document.body.appendChild(toast);
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+function init() {
+  $('year').textContent = new Date().getFullYear();
+  initTheme();
+  $('themeToggle').addEventListener('click', toggleTheme);
+  initCategoryFilter();
+  initBackTop();
+  initSmoothScroll();
+  initStaggerAnimation();
+  initPWA();
+
+  console.log('%cPIXORA TOOLS', 'color:#3b82f6;font-weight:900;font-size:22px;padding:6px 12px;background:#0b1220;border-radius:6px');
+  console.log('%cYour Images. Your Space.', 'color:#8b5cf6;font-weight:700;font-size:14px');
+  console.log('%cDesigned & Developed by Md. Ashfaqur Rahman Tanim → https://rovermdashfaq.github.io/portfolio', 'color:#94a3b8;font-size:12px');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+</script>
+</body>
+</html>

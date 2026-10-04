@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://martinitiative.github.io/pixora-tools/sitemap.xml
