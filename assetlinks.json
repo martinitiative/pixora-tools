@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.martinitiative.twa",
+        "sha256_cert_fingerprints": ["BF:86:95:B8:83:9E:AB:4B:25:A0:36:1C:33:87:7F:A9:AA:AA:8C:48:3E:FA:1A:EB:BA:C8:61:58:37:BC:BB:04"]
+      }
+    }]
