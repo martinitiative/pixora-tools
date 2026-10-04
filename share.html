@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#070b14" />
+<title>PIXORA — Shared Image</title>
+<link rel="icon" href="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: #070b14;
+  color: #f8fafc;
+  min-height: 100vh;
+  padding: 24px;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.12), transparent 40%);
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrap { max-width: 480px; width: 100%; text-align: center; }
+.logo {
+  width: 72px; height: 72px; border-radius: 18px;
+  margin: 0 auto 20px; display: block;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+}
+h1 {
+  font-size: 26px; font-weight: 800;
+  margin-bottom: 8px;
+  background: linear-gradient(120deg, #8b5cf6, #3b82f6, #06b6d4);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+p.subtitle { color: #94a3b8; font-size: 14px; margin-bottom: 28px; }
+.preview-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.preview-box img {
+  width: 100%; max-height: 320px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 12px 16px;
+  border-radius: 10px; font-size: 13px;
+  font-weight: 600; text-decoration: none;
+  border: none; cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+.btn-primary { background: linear-gradient(135deg, #8b5cf6, #3b82f6); }
+.btn-secondary {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary:hover { box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.loading { color: #94a3b8; font-size: 14px; }
+.empty-state {
+  padding: 40px 20px;
+  color: #94a3b8;
+  text-align: center;
+}
+.empty-state i {
+  font-size: 48px; color: #8b5cf6;
+  opacity: 0.5; margin-bottom: 16px;
+  display: block;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="logo" src="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" alt="PIXORA" />
+  <h1>Shared Image Received</h1>
+  <p class="subtitle">Choose what to do with this image</p>
+
+  <div id="content">
+    <div class="loading">
+      <i class="fa-solid fa-spinner fa-spin"></i> Loading image...
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const content = document.getElementById('content');
+
+  // Handle shared files via POST (share_target)
+  async function handleSharedFiles() {
+    try {
+      // Try POST method first (share_target uses POST)
+      const response = await fetch(window.location.href, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      });
+      // Not a real request — this just checks
+
+      // Check if files are being shared via form data
+      if (document.forms.length > 0) {
+        handleFormShare();
+        return;
+      }
+    } catch (e) { /* ignore */ }
+
+    // Fallback: try to read from query string or sessionStorage
+    const storedImage = sessionStorage.getItem('pixora_shared_image');
+    if (storedImage) {
+      showImage(storedImage);
+      sessionStorage.removeItem('pixora_shared_image');
+      return;
+    }
+
+    // No image shared
+    showEmpty();
+  }
+
+  function handleFormShare() {
+    // POST-based share_target: file is in the form
+    const form = document.forms[0];
+    const fileInput = form.querySelector('input[type="file"]');
+    if (fileInput && fileInput.files && fileInput.files[0]) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        showImage(e.target.result, file.name);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      showEmpty();
+    }
+  }
+
+  function showImage(dataUrl, filename) {
+    content.innerHTML = `
+      <div class="preview-box">
+        <img src="${dataUrl}" alt="Shared image" />
+      </div>
+      <div class="actions">
+        <a href="./compress.html" class="btn btn-primary" id="btnCompress">
+          <i class="fa-solid fa-compress"></i> Compress
+        </a>
+        <a href="./resize.html" class="btn btn-primary" id="btnResize">
+          <i class="fa-solid fa-expand"></i> Resize
+        </a>
+        <a href="./convert.html" class="btn btn-secondary" id="btnConvert">
+          <i class="fa-solid fa-arrows-rotate"></i> Convert
+        </a>
+        <a href="./bg-remove.html" class="btn btn-secondary" id="btnBgRemove">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> BG Remove
+        </a>
+      </div>
+    `;
+
+    // Store image in sessionStorage for the tool to pick up
+    if (dataUrl.length < 5 * 1024 * 1024) { // 5MB limit for sessionStorage
+      try {
+        sessionStorage.setItem('pixora_incoming_image', dataUrl);
+        sessionStorage.setItem('pixora_incoming_filename', filename || 'shared-image.png');
+      } catch (e) { console.warn('Storage quota exceeded'); }
+    }
+  }
+
+  function showEmpty() {
+    content.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-solid fa-image"></i>
+        <p style="margin-bottom: 20px;">No image was shared</p>
+        <a href="./index.html" class="btn btn-primary" style="max-width: 200px; margin: 0 auto; display: inline-flex;">
+          <i class="fa-solid fa-home"></i> Go to PIXORA
+        </a>
+      </div>
+    `;
+  }
+
+  // The share.html page receives POST from other apps via share_target
+  // The POST body contains form-data with the file
+  // But since we're a static site, we can't process POST directly.
+  // Solution: Use a form with enctype that browsers will auto-populate.
+
+  // Actually — for static PWA, share_target POST works like this:
+  // 1. OS opens share.html with POST
+  // 2. The POST body is accessible via the service worker
+  // 3. Service worker can intercept and redirect
+
+  // Simplest approach: register service worker to handle POST
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'SHARED_IMAGE') {
+        showImage(event.data.dataUrl, event.data.filename);
+      }
+    });
+  }
+
+  handleSharedFiles();
+
+  // Also listen for direct file input (fallback)
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('image')) {
+      // Not a good approach — skip
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
