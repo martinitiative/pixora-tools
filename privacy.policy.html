@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+<meta name="description" content="Privacy Policy for PIXORA TOOLS — Learn how we protect your data. Your images never leave your device. 100% private." />
+<meta name="theme-color" content="#070b14" />
+<meta name="author" content="Md. Ashfaqur Rahman Tanim" />
+<meta name="robots" content="index,follow" />
+
+<!-- PWA -->
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="PIXORA TOOLS" />
+<meta name="application-name" content="PIXORA TOOLS" />
+<meta name="msapplication-TileColor" content="#070b14" />
+
+<title>Privacy Policy — PIXORA TOOLS</title>
+
+<link rel="icon" type="image/png" href="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" />
+<link rel="apple-touch-icon" href="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" />
+<link rel="manifest" href="./manifest.json" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary: #070b14;
+  --bg-elevated: #0b1220;
+  --bg-card: rgba(15, 23, 42, 0.6);
+  --bg-card-solid: #0f172a;
+  --bg-code: #060a12;
+
+  --blue: #3b82f6;
+  --violet: #8b5cf6;
+  --cyan: #06b6d4;
+  --pink: #ec4899;
+  --amber: #f59e0b;
+  --emerald: #10b981;
+
+  --violet-glow: rgba(139, 92, 246, 0.25);
+  --blue-glow: rgba(59, 130, 246, 0.35);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(139, 92, 246, 0.4);
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  --font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+
+  --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f4f7fe;
+  --bg-elevated: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-solid: #ffffff;
+  --bg-code: #f1f5f9;
+
+  --blue: #2563eb;
+  --violet: #7c3aed;
+  --cyan: #0891b2;
+
+  --violet-glow: rgba(124, 58, 237, 0.12);
+  --blue-glow: rgba(37, 99, 235, 0.18);
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+
+  --success: #059669;
+  --danger: #dc2626;
+  --warning: #d97706;
+
+  --border: rgba(15, 23, 42, 0.08);
+  --border-highlight: rgba(124, 58, 237, 0.3);
+
+  --shadow-card: 0 8px 32px rgba(37, 99, 235, 0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color var(--transition), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 0%, var(--blue-glow), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 100%, var(--violet-glow), transparent 60%);
+  transition: background var(--transition);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+  background-clip: content-box;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7, 11, 20, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition), border-color var(--transition);
+}
+[data-theme="light"] .header { background: rgba(244, 247, 254, 0.85); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--border), 0 4px 12px var(--violet-glow);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, var(--violet), var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  color: var(--violet);
+  border-color: var(--border-highlight);
+  transform: translateY(-1px);
+}
+
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  color: var(--violet);
+  border-color: var(--border-highlight);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   PAGE CONTENT
+   ============================================================ */
+.page-main {
+  padding: 48px 0 80px;
+}
+
+.legal-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 48px 44px;
+  box-shadow: var(--shadow-card);
+}
+
+.page-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(59, 130, 246, 0.12));
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  background: linear-gradient(120deg, var(--violet), var(--blue), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-updated {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  margin-bottom: 32px;
+  font-family: var(--mono);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.page-updated i { color: var(--violet); }
+
+.page-intro {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Highlight Box */
+.highlight-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 22px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.08));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  margin: 24px 0;
+}
+
+.highlight-box .hl-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--emerald), var(--cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.highlight-box .hl-content h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text-main);
+}
+
+.highlight-box .hl-content p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Section */
+.legal-section {
+  margin-bottom: 32px;
+}
+
+.legal-section h2 {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px var(--violet-glow);
+}
+
+.legal-section h3 {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 18px 0 8px;
+}
+
+.legal-section p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.legal-section ul, .legal-section ol {
+  margin: 8px 0 16px 22px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.legal-section li {
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+.legal-section li::marker { color: var(--violet); font-weight: 700; }
+
+.legal-section strong { color: var(--text-main); font-weight: 600; }
+
+.legal-section a {
+  color: var(--violet);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--violet);
+  transition: all var(--transition);
+}
+
+.legal-section a:hover {
+  color: var(--blue);
+  border-bottom-style: solid;
+}
+
+/* Table */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 16px 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+  font-size: 14px;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  background: rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+td { color: var(--text-muted); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+/* Contact card */
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(59, 130, 246, 0.08));
+  border: 1px solid var(--border-highlight);
+  margin: 20px 0;
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px var(--violet-glow);
+}
+
+.contact-info h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.contact-info p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.contact-info a {
+  color: var(--violet);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Footer links */
+.legal-footer {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.legal-footer-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.legal-footer-nav a {
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legal-footer-nav a:hover {
+  color: var(--violet);
+  border-color: var(--border-highlight);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 24px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+[data-theme="light"] .footer { background: rgba(15, 23, 42, 0.02); }
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.footer-inner strong { color: var(--text-muted); }
+.footer-inner a {
+  color: var(--violet);
+  font-weight: 600;
+}
+.footer-inner a:hover { color: var(--blue); text-decoration: underline; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .header-inner { padding: 12px 16px; }
+  .brand-sub { display: none; }
+  .back-btn span { display: none; }
+  .back-btn { padding: 9px 12px; }
+  .page-main { padding: 32px 0 60px; }
+  .legal-card { padding: 32px 22px; }
+  .page-title { font-size: 28px; }
+  .page-updated { font-size: 12.5px; }
+  .page-intro { font-size: 15.5px; }
+  .legal-section h2 { font-size: 19px; }
+  .legal-section h3 { font-size: 15px; }
+  .legal-section p,
+  .legal-section ul,
+  .legal-section ol { font-size: 14.5px; }
+  .section-num { width: 28px; height: 28px; font-size: 12.5px; }
+  .contact-card { padding: 18px; flex-direction: column; }
+  .contact-icon { width: 44px; height: 44px; font-size: 18px; }
+  .legal-footer { flex-direction: column; align-items: flex-start; }
+  .legal-footer-nav { width: 100%; }
+  .legal-footer-nav a { flex: 1; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .legal-card { padding: 26px 18px; border-radius: 16px; }
+  .page-title { font-size: 26px; }
+  .highlight-box { flex-direction: column; gap: 10px; padding: 16px; }
+  .highlight-box .hl-icon { width: 36px; height: 36px; font-size: 14px; }
+  th, td { padding: 10px 12px; font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header">
+  <div class="header-inner">
+    <a href="./index.html" class="brand" aria-label="PIXORA TOOLS home">
+      <img src="https://i.ibb.co/j2wY85d/file-00000000031882119d721429cf3de75c.png" alt="PIXORA logo" />
+      <div class="brand-text">
+        <span class="brand-name">PIXORA TOOLS</span>
+        <span class="brand-sub">Privacy Policy</span>
+      </div>
+    </a>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <a href="./index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to App</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main class="page-main">
+  <div class="container">
+    <div class="legal-card">
+      
+      <div class="page-badge">
+        <i class="fa-solid fa-shield-halved"></i>
+        Legal Document
+      </div>
+
+      <h1 class="page-title">Privacy Policy</h1>
+
+      <div class="page-updated">
+        <i class="fa-solid fa-calendar-check"></i>
+        Last updated: October 5, 2026
+        <span style="opacity: 0.4;">•</span>
+        <i class="fa-solid fa-code-branch"></i>
+        Version 1.0
+      </div>
+
+      <p class="page-intro">
+        Welcome to <strong>PIXORA TOOLS</strong> — your complete image toolkit. 
+        This Privacy Policy explains how we handle your data when you use our 
+        applications, website, and services. We built PIXORA with privacy as a 
+        core principle: <strong>your images never leave your device</strong>.
+      </p>
+
+      <!-- Highlight Box -->
+      <div class="highlight-box">
+        <div class="hl-icon">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <div class="hl-content">
+          <h4>🛡️ Our Core Promise</h4>
+          <p>
+            PIXORA TOOLS processes 99% of your images <strong>entirely within your 
+            browser</strong>. No uploads, no servers, no tracking. The one 
+            exception is the Background Remover tool, which uses Remove.bg's API 
+            — and even then, images are automatically deleted within 1 hour.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 1: Info We Collect -->
+      <section class="legal-section">
+        <h2><span class="section-num">1</span> Information We Collect</h2>
+        
+        <p>
+          PIXORA TOOLS is designed with privacy by default. Here's exactly what 
+          we do and do not collect:
+        </p>
+
+        <h3>📸 Your Images</h3>
+        <ul>
+          <li><strong>Local Processing (Most Tools):</strong> All image processing 
+            for Compress, Resize, Convert, Palette, QR, Watermark, OCR, Encode, 
+            and the Platform happens entirely in your browser. <strong>Your images 
+            never touch our servers.</strong></li>
+          <li><strong>Background Remover:</strong> This tool sends your image to 
+            <a href="https://www.remove.bg" target="_blank" rel="noopener">Remove.bg</a>'s 
+            secure API for AI processing. Images are automatically deleted from 
+            their servers within <strong>1 hour</strong>. We don't store any copies.</li>
+        </ul>
+
+        <h3>📊 Usage Data (Anonymous)</h3>
+        <ul>
+          <li><strong>Local Storage:</strong> We store your theme preference 
+            (dark/light mode) and API usage counters in your browser's localStorage. 
+            This never leaves your device.</li>
+          <li><strong>No Analytics:</strong> We don't use Google Analytics, 
+            Facebook Pixel, or any tracking scripts.</li>
+          <li><strong>No Cookies:</strong> PIXORA doesn't set any tracking cookies.</li>
+        </ul>
+
+        <h3>🚫 What We Do NOT Collect</h3>
+        <ul>
+          <li>❌ Your name, email, or personal information</li>
+          <li>❌ Your IP address or location</li>
+          <li>❌ Your device information</li>
+          <li>❌ Your browsing history</li>
+          <li>❌ Any images you process</li>
+          <li>❌ Any files you create</li>
+        </ul>
+      </section>
+
+      <!-- Section 2: How We Use Data -->
+      <section class="legal-section">
+        <h2><span class="section-num">2</span> How We Use Your Information</h2>
+
+        <p>
+          Since we don't collect personal data, there's very little to explain. 
+          The only data flows are:
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>Purpose</th>
+                <th>Where It Goes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Theme preference</strong></td>
+                <td>Remember your dark/light mode</td>
+                <td>Your browser's localStorage</td>
+              </tr>
+              <tr>
+                <td><strong>API usage counters</strong></td>
+                <td>Prevent abuse of free BG Remover credits</td>
+                <td>Your browser's localStorage</td>
+              </tr>
+              <tr>
+                <td><strong>Background image (BG Remover only)</strong></td>
+                <td>AI background removal processing</td>
+                <td>Remove.bg API (deleted within 1 hour)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: Third-Party Services -->
+      <section class="legal-section">
+        <h2><span class="section-num">3</span> Third-Party Services</h2>
+
+        <p>
+          PIXORA TOOLS uses minimal third-party services to function properly. 
+          Here's the complete list:
+        </p>
+
+        <h3>🔧 CDN & Hosting</h3>
+        <ul>
+          <li><strong>GitHub Pages</strong> — Hosts our website. 
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li><strong>jsDelivr, cdnjs, unpkg</strong> — Serve libraries (Tesseract.js, JSZip, etc.). These are pure CDN services with no tracking.</li>
+        </ul>
+
+        <h3>🎨 UI Assets</h3>
+        <ul>
+          <li><strong>Google Fonts</strong> — Provides the "Outfit" typography. 
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy</a></li>
+          <li><strong>Font Awesome</strong> — Provides icons. No tracking.</li>
+          <li><strong>ImgBB</strong> — Used to host PIXORA's logo and CDN images. No user data.</li>
+        </ul>
+
+        <h3>🤖 AI & Processing</h3>
+        <ul>
+          <li><strong>Remove.bg API</strong> — Powers the Background Remover tool. 
+            <a href="https://www.remove.bg/privacy" target="_blank" rel="noopener">Their Privacy Policy</a></li>
+          <li><strong>Tesseract.js (WASM)</strong> — Runs OCR entirely in your browser. No server calls.</li>
+        </ul>
+
+        <h3>🌐 What These Services See</h3>
+        <p>
+          When you load PIXORA, your browser requests files from these CDNs. They 
+          see standard HTTP request data (IP address, user agent) — this is 
+          <strong>identical to any website you visit</strong>. None of them receive 
+          your images, files, or personal data.
+        </p>
+      </section>
+
+      <!-- Section 4: Data Storage -->
+      <section class="legal-section">
+        <h2><span class="section-num">4</span> Data Storage & Security</h2>
+
+        <h3>💾 Where Your Data Lives</h3>
+        <ul>
+          <li><strong>Your Device:</strong> All processing results stay on your 
+            device until you download them.</li>
+          <li><strong>Browser localStorage:</strong> Small preferences (theme, 
+            counters) stored locally — cleared when you clear browser data.</li>
+          <li><strong>No Cloud Storage:</strong> PIXORA has no database of user 
+            images or personal info.</li>
+        </ul>
+
+        <h3>🔐 Security Measures</h3>
+        <ul>
+          <li>✅ <strong>HTTPS-only</strong> — All connections are encrypted</li>
+          <li>✅ <strong>Content Security Policy</strong> — Restricts unauthorized scripts</li>
+          <li>✅ <strong>No server-side storage</strong> — Nothing to breach</li>
+          <li>✅ <strong>Client-side processing</strong> — Your browser sandbox protects you</li>
+          <li>✅ <strong>Open architecture</strong> — You can inspect the code anytime</li>
+        </ul>
+      </section>
+
+      <!-- Section 5: Your Rights -->
+      <section class="legal-section">
+        <h2><span class="section-num">5</span> Your Rights & Control</h2>
+
+        <p>
+          You have complete control over your experience with PIXORA TOOLS:
+        </p>
+
+        <ul>
+          <li><strong>Right to Use:</strong> Use all tools without signup, fees, or restrictions.</li>
+          <li><strong>Right to Privacy:</strong> Your images stay on your device.</li>
+          <li><strong>Right to Clear Data:</strong> Clear browser data anytime — 
+            your localStorage preferences will reset.</li>
+          <li><strong>Right to Uninstall:</strong> Remove the PWA from your device 
+            anytime. No account to delete.</li>
+          <li><strong>Right to Know:</strong> All code is publicly visible on GitHub.</li>
+          <li><strong>Right to Contact:</strong> Reach out with any privacy concerns.</li>
+        </ul>
+      </section>
+
+      <!-- Section 6: Children's Privacy -->
+      <section class="legal-section">
+        <h2><span class="section-num">6</span> Children's Privacy</h2>
+
+        <p>
+          PIXORA TOOLS is safe for users of all ages. We comply with:
+        </p>
+
+        <ul>
+          <li>✅ <strong>COPPA</strong> (US) — Children's Online Privacy Protection Act</li>
+          <li>✅ <strong>GDPR-K</strong> (EU) — Special protections for children</li>
+          <li>✅ <strong>Google Play Families Policy</strong></li>
+        </ul>
+
+        <p>
+          Since we don't collect any personal information, PIXORA is safe for 
+          children. Parents can confidently let kids use our tools without 
+          concerns about data collection.
+        </p>
+      </section>
+
+      <!-- Section 7: International Users -->
+      <section class="legal-section">
+        <h2><span class="section-num">7</span> International Users</h2>
+
+        <p>
+          PIXORA TOOLS is available worldwide. Since we don't collect personal 
+          data, there are no cross-border data transfer concerns. Your data 
+          remains in your browser, wherever you are.
+        </p>
+
+        <p>
+          For users in the <strong>European Union</strong>: We comply with GDPR. 
+          You have full rights under Article 15-22, but since we don't collect 
+          data, there's nothing to access, correct, or delete.
+        </p>
+      </section>
+
+      <!-- Section 8: Changes -->
+      <section class="legal-section">
+        <h2><span class="section-num">8</span> Changes to This Policy</h2>
+
+        <p>
+          We may update this Privacy Policy from time to time. When we do:
+        </p>
+
+        <ul>
+          <li>✅ The <strong>"Last updated"</strong> date at the top will change</li>
+          <li>✅ Material changes will be announced on the homepage</li>
+          <li>✅ Previous versions are preserved in our GitHub history</li>
+        </ul>
+
+        <p>
+          Continued use of PIXORA TOOLS after changes constitutes acceptance of 
+          the updated policy. We'll never make changes that compromise your 
+          privacy without clear disclosure.
+        </p>
+      </section>
+
+      <!-- Section 9: Contact -->
+      <section class="legal-section">
+        <h2><span class="section-num">9</span> Contact Us</h2>
+
+        <p>
+          Have questions about this Privacy Policy or how PIXORA handles your 
+          data? We'd love to hear from you:
+        </p>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="contact-info">
+            <h4>Email Us</h4>
+            <p>For privacy inquiries, data concerns, or general questions:</p>
+            <a href="mailto:rovermdashfaq@gmail.com">rovermdashfaq@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div class="contact-info">
+            <h4>Developer</h4>
+            <p>PIXORA TOOLS is designed and maintained by:</p>
+            <strong>Md. Ashfaqur Rahman Tanim</strong>
+            <p style="margin-top: 6px;">
+              <a href="https://rovermdashfaq.github.io/portfolio" target="_blank" rel="noopener">
+                View Portfolio →
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-brands fa-github"></i>
+          </div>
+          <div class="contact-info">
+            <h4>Source Code</h4>
+            <p>Inspect our code and verify our privacy practices:</p>
+            <a href="https://github.com/martinitiative" target="_blank" rel="noopener">
+              github.com/martinitiative
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Acknowledgment -->
+      <div class="highlight-box" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(59, 130, 246, 0.08)); border-color: var(--border-highlight);">
+        <div class="hl-icon" style="background: linear-gradient(135deg, var(--violet), var(--blue)); box-shadow: 0 4px 12px var(--violet-glow);">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="hl-content">
+          <h4>Thank You</h4>
+          <p>
+            Thank you for choosing PIXORA TOOLS. We built this platform to 
+            respect your privacy, empower your creativity, and stay out of 
+            your way. Enjoy your complete image toolkit — 100% free, forever.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer Navigation -->
+      <div class="legal-footer">
+        <div class="legal-footer-nav">
+          <a href="./index.html">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
+          <a href="./terms.html">
+            <i class="fa-solid fa-file-contract"></i> Terms of Service
+          </a>
+          <a href="mailto:rovermdashfaq@gmail.com">
+            <i class="fa-solid fa-envelope"></i> Contact
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      © <span id="year"></span> <strong>PIXORA TOOLS</strong> — All rights reserved
+    </div>
+    <div>
+      Designed & Developed by 
+      <a href="https://rovermdashfaq.github.io/portfolio" target="_blank" rel="noopener">
+        Md. Ashfaqur Rahman Tanim
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   THEME
+   ============================================================ */
+(function() {
+  'use strict';
+  
+  const $ = (id) => document.getElementById(id);
+  const THEME_KEY = 'pixora-tools-theme';
+
+  function initTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+    if (saved === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      updateIcon(true);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      updateIcon(false);
+    }
+  }
+
+  function toggleTheme() {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      try { localStorage.setItem(THEME_KEY, 'dark'); } catch (e) {}
+      updateIcon(false);
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      try { localStorage.setItem(THEME_KEY, 'light'); } catch (e) {}
+      updateIcon(true);
+    }
+  }
+
+  function updateIcon(isLight) {
+    const icon = $('themeToggle').querySelector('i');
+    if (icon) icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  }
+
+  function init() {
+    $('year').textContent = new Date().getFullYear();
+    initTheme();
+    $('themeToggle').addEventListener('click', toggleTheme);
+
+    // PWA service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js', { scope: './' })
+          .then((r) => console.log('[PWA] SW registered:', r.scope))
+          .catch((e) => console.warn('[PWA] SW failed:', e));
+      });
+    }
+
+    console.log('%cPIXORA TOOLS — Privacy Policy', 'color:#8b5cf6;font-weight:900;font-size:18px;padding:6px 12px;background:#0b1220;border-radius:6px');
+    console.log('%cYour images never leave your device.', 'color:#10b981;font-weight:700;font-size:13px');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
